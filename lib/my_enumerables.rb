@@ -28,6 +28,28 @@ module Enumerable
     end
     one_condition_met
   end
+
+  def my_none?
+    no_conditions_met = true
+    self.my_each do |v|
+      if yield(v)
+        no_conditions_met = false
+      end
+    end
+    no_conditions_met
+  end
+
+  def my_count
+    count = 0
+    return self.size unless block_given?
+
+    self.my_each do |v|
+      if yield(v)
+        count += 1
+      end
+    end
+    count
+  end
   # Your code goes here
 end
 
