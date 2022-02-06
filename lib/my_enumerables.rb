@@ -8,6 +8,26 @@ module Enumerable
     end
     selected_values
   end
+
+  def my_all?
+    all_conditions_met = true
+    self.my_each do |v|
+      unless yield(v)
+        all_conditions_met = false
+      end
+    end
+    all_conditions_met
+  end
+
+  def my_any?
+    one_condition_met = false
+    self.my_each do |v|
+      if yield(v)
+        one_condition_met = true
+      end
+    end
+    one_condition_met
+  end
   # Your code goes here
 end
 
