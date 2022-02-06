@@ -50,6 +50,21 @@ module Enumerable
     end
     count
   end
+
+  def my_map
+    new_array = []
+    self.my_each do |v|
+      new_array << yield(v)
+    end
+    new_array
+  end
+
+  def my_inject(default_value = 0)
+    self.my_each do |v|
+      default_value = yield(default_value, v)
+    end
+    default_value
+  end
   # Your code goes here
 end
 
